@@ -1,6 +1,6 @@
 Bir oyun yazmak istiyorsunuz. Bu yazılım için backend kodlarını JAVA ile geliştirmeyi planlıyoruz.Yeni üye, satış ve kampanya yönetimi yapılması isteniyor.Nesnelere ait özellikleri istediğiniz gibi verebilirsiniz. 
 
-1.Gereksinimler
+1.  Gereksinimler
 
 1.1.  Oyuncuların sisteme kayıt olabileceği, bilgilerini güncelleyebileceği, kayıtlarını 
 silebileceği bir ortamı simule ediniz. Müşteri bilgilerinin doğruluğunu e-devlet sistemlerini 
