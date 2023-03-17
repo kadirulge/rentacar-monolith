@@ -1,1 +1,1 @@
-# TurkcellGY
+# Turkcell GYGY Java Bootcamp
