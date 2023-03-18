@@ -7,7 +7,7 @@ import org.example.entities.Customer;
 import java.util.ArrayList;
 
 public class CustomerManager implements CustomerService {
-    private CustomerCheckService customerCheckService;
+    CustomerCheckService customerCheckService;
 
 
     public CustomerManager(CustomerCheckService customerCheckService) {
