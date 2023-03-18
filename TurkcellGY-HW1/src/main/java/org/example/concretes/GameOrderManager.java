@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class GameOrderManager implements GameOrderService {
 
-    CustomerCheckService customerCheckService;
+    private CustomerCheckService customerCheckService;
 
 
     public GameOrderManager(CustomerCheckService customerCheckService) {
