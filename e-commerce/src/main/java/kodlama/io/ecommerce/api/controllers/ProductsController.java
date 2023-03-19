@@ -10,6 +10,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/products")
 public class ProductsController {
+
     private final ProductService service;
 
     public ProductsController(ProductService service) {
@@ -26,15 +27,15 @@ public class ProductsController {
         return service.getById(id);
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Product add(@RequestBody Product product) {
-        return service.add(product);
+    @GetMapping("/")
+    public Product getById2(@RequestParam int id) {
+        return service.getById(id);
     }
 
-    @PutMapping("/{id}")
-    public Product update(@PathVariable int id, @RequestBody Product product) {
-        return service.update(id, product);
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void add(@RequestBody Product product) {
+        service.add(product);
     }
 
     @DeleteMapping("/{id}")
@@ -42,4 +43,12 @@ public class ProductsController {
     public void delete(@PathVariable int id) {
         service.delete(id);
     }
+
+    @PutMapping("/{id}")
+    public void update(@RequestBody Product product,
+                       @PathVariable int id) {
+        service.update(product, id);
+    }
+
+
 }
