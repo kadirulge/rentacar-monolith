@@ -9,52 +9,40 @@ import java.util.List;
 
 @Repository
 public class InMemoryProductRepository implements ProductRepository {
-
     List<Product> products;
 
     public InMemoryProductRepository() {
         products = new ArrayList<>();
-        products.add(new Product(1, "IPhone 14", 1, 33.000, "phone"));
-        products.add(new Product(2, "Monster Abra A5 V19.2", 1, 20.250, "gaming computer"));
-        products.add(new Product(3, "LG OLED LED TV", 1, 25.175, "led tv"));
+        products.add(new Product(1, "Iphone 14", 10, 30000.99, "apple's product"));
+        products.add(new Product(2, "Macbook air", 10, 27000, "apple's product"));
+        products.add(new Product(3, "Xbox", 5, 25000, "microsoft's product"));
+        products.add(new Product(4, "PS5", 7, 17000, "sony's product"));
+        products.add(new Product(5, "Dyson v15", 10, 14999.99, "dyson's product"));
     }
 
     @Override
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
-    @Override
-    public void removeProduct(int id) {
-        for (Product product : products) {
-            if (product.getId() == id)
-                products.remove(product);
-        }
-    }
-
-    @Override
-    public void updateProduct(Product product, int id) {
-        for (Product product1 : products) {
-            if (product1.getId() == id) {
-                product1.setDescription(product.getDescription());
-                product1.setName(product.getName());
-                product1.setPrice(product.getPrice());
-                product1.setQuantity(product.getQuantity());
-            }
-        }
-    }
-
-    @Override
-    public Product findProductById(int id) {
-        for (Product product : products) {
-            if (product.getId() == id)
-                return product;
-        }
-        return null;
-    }
-
-    @Override
-    public List<Product> listProducts() {
+    public List<Product> getAll() {
         return products;
+    }
+
+    @Override
+    public Product getById(int id) {
+        return products.get(id - 1);
+    }
+
+    @Override
+    public Product add(Product product) {
+        products.add(product);
+        return product;
+    }
+
+    @Override
+    public Product update(int id, Product product) {
+        return products.set(id - 1, product);
+    }
+
+    @Override
+    public void delete(int id) {
+        products.remove(id - 1);
     }
 }

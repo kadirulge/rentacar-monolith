@@ -4,17 +4,17 @@ public class Product {
     private int id;
     private String name;
     private int quantity;
-    private double price;
+    private double unitPrice;
     private String description;
 
-    public Product() {
+    public Product() { // No args constructor
     }
 
-    public Product(int id, String name, int quantity, double price, String description) {
+    public Product(int id, String name, int quantity, double unitPrice, String description) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
-        this.price = price;
+        this.unitPrice = unitPrice;
         this.description = description;
     }
 
@@ -22,9 +22,9 @@ public class Product {
         return id;
     }
 
-/*    public void setId(int id) {
+    public void setId(int id) {
         this.id = id;
-    }*/
+    }
 
     public String getName() {
         return name;
@@ -42,12 +42,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
+    public double getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 
     public String getDescription() {
@@ -57,5 +57,4 @@ public class Product {
     public void setDescription(String description) {
         this.description = description;
     }
-
 }
