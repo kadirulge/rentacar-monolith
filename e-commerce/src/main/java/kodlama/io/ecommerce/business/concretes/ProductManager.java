@@ -2,23 +2,21 @@ package kodlama.io.ecommerce.business.concretes;
 
 import kodlama.io.ecommerce.business.abstracts.CheckProductService;
 import kodlama.io.ecommerce.business.abstracts.ProductService;
-import kodlama.io.ecommerce.entities.concretes.Product;
-import kodlama.io.ecommerce.repository.abstracts.ProductRepository;
+import kodlama.io.ecommerce.entities.Product;
+import kodlama.io.ecommerce.repository.ProductRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class ProductManager implements ProductService {
 
     private final ProductRepository repository;
     private CheckProductService service;
 
-    public ProductManager(ProductRepository repository, CheckProductService service) {
 
-        this.repository = repository;
-        this.service = service;
-    }
 
     @Override
     public Product add(Product product) {
@@ -35,24 +33,14 @@ public class ProductManager implements ProductService {
         return product;*/
 
         validateProduct(product);
-
-        return repository.add(product);
+        return repository.save(product);
 
     }
 
     @Override
     public void delete(int id) {
-        if (repository.getAll().size() == 0) {
-            throw new RuntimeException("ürün yok");
-        } else if (repository.getById(id) == null) {
-            throw new RuntimeException("ürün bulunamadi");
-
-        } else {
-            repository.delete(id);
-            System.out.println("ürün basariyla silindi");
-        }
-
-
+        checkIfProductExists(id);
+        repository.deleteById(id);
     }
 
     @Override
@@ -68,10 +56,10 @@ public class ProductManager implements ProductService {
             System.out.println("ürün basariyla güncellendi");
         }
         return product;*/
-
+        checkIfProductExists(id);
         validateProduct(product);
-
-        repository.update(product, id);
+        product.setId(id);
+        repository.save(product);
         return product;
 
 
@@ -81,24 +69,24 @@ public class ProductManager implements ProductService {
     @Override
     public Product getById(int id) {
 
-        if (repository.getById(id) == null) {
-            throw new RuntimeException("ürün bulunamadi");
-        }
-
-        return repository.getById(id);
+        checkIfProductExists(id);
+        return repository.findById(id).orElseThrow();
 
     }
 
     @Override
     public List<Product> getAll() {
-        if (repository.getAll().size() == 0) {
+        if (repository.findAll().size() == 0) {
             throw new RuntimeException("ürün listesi bos");
         }
-        return repository.getAll();
+        return repository.findAll();
     }
 
 //BUSINESS RULES
 
+    private void checkIfProductExists(int id) {
+        if (!repository.existsById(id)) throw new RuntimeException("Product not found with id: " + id);
+    }
     private void validateProduct(Product product){
         checkIfUnitPriceValid(product);
         checkIfDescriptionLengthValid(product);
