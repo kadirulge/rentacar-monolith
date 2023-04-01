@@ -1,6 +1,12 @@
 package kodlama.io.ecommerce.api.controllers;
 
 import kodlama.io.ecommerce.business.abstracts.ProductService;
+import kodlama.io.ecommerce.dto.requests.create.CreateProductRequest;
+import kodlama.io.ecommerce.dto.requests.update.UpdateProductRequest;
+import kodlama.io.ecommerce.dto.responses.create.CreateProductResponse;
+import kodlama.io.ecommerce.dto.responses.get.GetAllProductsResponse;
+import kodlama.io.ecommerce.dto.responses.get.GetProductResponse;
+import kodlama.io.ecommerce.dto.responses.update.UpdateProductResponse;
 import kodlama.io.ecommerce.entities.Product;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,26 +21,25 @@ public class ProductsController {
 
     private final ProductService service;
 
-
     @GetMapping
-    public List<Product> getAll() {
+    public List<GetAllProductsResponse> getAll() {
         return service.getAll();
     }
 
     @GetMapping("/{id}")
-    public Product getById(@PathVariable int id) {
+    public GetProductResponse getById(@PathVariable int id) {
         return service.getById(id);
     }
 
- /*   @GetMapping("/")
-    public Product getById2(@RequestParam int id) {
-        return service.getById(id);
-    }*/
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void add(@RequestBody Product product) {
-        service.add(product);
+    public CreateProductResponse add(@RequestBody CreateProductRequest request) {
+        return service.add(request);
+    }
+
+    @PutMapping("/{id}")
+    public UpdateProductResponse update(@PathVariable int id, @RequestBody UpdateProductRequest request) {
+        return service.update(id, request);
     }
 
     @DeleteMapping("/{id}")
@@ -42,12 +47,4 @@ public class ProductsController {
     public void delete(@PathVariable int id) {
         service.delete(id);
     }
-
-    @PutMapping("/{id}")
-    public void update(@RequestBody Product product,
-                       @PathVariable int id) {
-        service.update(product, id);
-    }
-
-
 }
