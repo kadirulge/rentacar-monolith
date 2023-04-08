@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ModelMapperConfig {
     @Bean
-    public ModelMapper getModelMapper() {  //bize ait bir sınıf olmadığı için burada oluşturduk. Bize ait olsaydı manager sınıfımızda bean oluşturabilirdik
+    public ModelMapper getModelMapper() {
         return new ModelMapper();
     }
 }

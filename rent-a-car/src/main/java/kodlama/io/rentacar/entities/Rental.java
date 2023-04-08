@@ -6,20 +6,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 @Entity
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "brands")
-public class Brand {
-    @Id // Primary Key -> PK
+@Table(name = "rentals")
+public class Rental {
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-
-    @OneToMany(mappedBy = "brand")
-    private List<Model> models;
+    private double dailyPrice;
+    private int rentedForDays;
+    private double totalPrice;
+    private LocalDateTime startDate;
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private Car car;
 }

@@ -1,12 +1,12 @@
 package kodlama.io.rentacar.business.concretes;
 
 import kodlama.io.rentacar.business.abstracts.ModelService;
-import kodlama.io.rentacar.business.dto.requests.create.model.CreateModelRequest;
-import kodlama.io.rentacar.business.dto.requests.update.model.UpdateModelRequest;
-import kodlama.io.rentacar.business.dto.responses.create.model.CreateModelResponse;
-import kodlama.io.rentacar.business.dto.responses.get.model.GetAllModelsResponse;
-import kodlama.io.rentacar.business.dto.responses.get.model.GetModelResponse;
-import kodlama.io.rentacar.business.dto.responses.update.model.UpdateModelResponse;
+import kodlama.io.rentacar.business.dto.requests.create.CreateModelRequest;
+import kodlama.io.rentacar.business.dto.requests.update.UpdateModelRequest;
+import kodlama.io.rentacar.business.dto.responses.create.CreateModelResponse;
+import kodlama.io.rentacar.business.dto.responses.get.GetAllModelsResponse;
+import kodlama.io.rentacar.business.dto.responses.get.GetModelResponse;
+import kodlama.io.rentacar.business.dto.responses.update.UpdateModelResponse;
 import kodlama.io.rentacar.entities.Model;
 import kodlama.io.rentacar.repository.ModelRepository;
 import lombok.AllArgsConstructor;
@@ -18,9 +18,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class ModelManager implements ModelService {
-
-    private ModelRepository repository;
-    private ModelMapper mapper;
+    private final ModelRepository repository;
+    private final ModelMapper mapper;
 
     @Override
     public List<GetAllModelsResponse> getAll() {
@@ -29,6 +28,7 @@ public class ModelManager implements ModelService {
                 .stream()
                 .map(model -> mapper.map(model, GetAllModelsResponse.class))
                 .toList();
+
         return response;
     }
 
@@ -37,6 +37,7 @@ public class ModelManager implements ModelService {
         checkIfModelExistsById(id);
         Model model = repository.findById(id).orElseThrow();
         GetModelResponse response = mapper.map(model, GetModelResponse.class);
+
         return response;
     }
 
@@ -47,6 +48,7 @@ public class ModelManager implements ModelService {
         model.setId(0);
         repository.save(model);
         CreateModelResponse response = mapper.map(model, CreateModelResponse.class);
+
         return response;
     }
 
@@ -57,6 +59,7 @@ public class ModelManager implements ModelService {
         model.setId(id);
         repository.save(model);
         UpdateModelResponse response = mapper.map(model, UpdateModelResponse.class);
+
         return response;
     }
 
@@ -66,13 +69,15 @@ public class ModelManager implements ModelService {
         repository.deleteById(id);
     }
 
-    //BUSINESS RULES
     private void checkIfModelExistsById(int id) {
-        if (!repository.existsById(id)) throw new IllegalArgumentException("böyle bir model mevcut değil.");
+        if (!repository.existsById(id)) {
+            throw new RuntimeException("Böyle bir model mevcut değil.");
+        }
     }
 
     private void checkIfModelExistsByName(String name) {
-        if (repository.existsByNameIgnoreCase(name))
-            throw new IllegalArgumentException("böyle bir model sistemde kayıtlı.");
+        if (repository.existsByNameIgnoreCase(name)) {
+            throw new RuntimeException("Böyle bir model sistemde kayıtlı!");
+        }
     }
 }

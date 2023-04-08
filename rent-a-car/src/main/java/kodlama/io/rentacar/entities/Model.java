@@ -6,19 +6,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-
 
 @Entity
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "models")
 public class Model {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -29,5 +25,5 @@ public class Model {
     private Brand brand;
 
     @OneToMany(mappedBy = "model")
-    private Set<Car> cars =new HashSet<>();
+    private List<Car> cars;
 }
