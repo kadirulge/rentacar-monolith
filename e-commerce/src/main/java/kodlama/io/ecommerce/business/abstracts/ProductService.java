@@ -1,11 +1,11 @@
 package kodlama.io.ecommerce.business.abstracts;
 
-import kodlama.io.ecommerce.dto.requests.create.CreateProductRequest;
-import kodlama.io.ecommerce.dto.requests.update.UpdateProductRequest;
-import kodlama.io.ecommerce.dto.responses.create.CreateProductResponse;
-import kodlama.io.ecommerce.dto.responses.get.GetAllProductsResponse;
-import kodlama.io.ecommerce.dto.responses.get.GetProductResponse;
-import kodlama.io.ecommerce.dto.responses.update.UpdateProductResponse;
+import kodlama.io.ecommerce.business.dto.requests.create.CreateProductRequest;
+import kodlama.io.ecommerce.business.dto.requests.update.UpdateProductRequest;
+import kodlama.io.ecommerce.business.dto.responses.create.CreateProductResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.GetAllProductsResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.GetProductResponse;
+import kodlama.io.ecommerce.business.dto.responses.update.UpdateProductResponse;
 
 import java.util.List;
 

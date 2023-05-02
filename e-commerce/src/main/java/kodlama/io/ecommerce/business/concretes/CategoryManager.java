@@ -1,12 +1,12 @@
 package kodlama.io.ecommerce.business.concretes;
 
 import kodlama.io.ecommerce.business.abstracts.CategoryService;
-import kodlama.io.ecommerce.dto.requests.create.CreateCategoryRequest;
-import kodlama.io.ecommerce.dto.requests.update.UpdateCategoryRequest;
-import kodlama.io.ecommerce.dto.responses.create.CreateCategoryResponse;
-import kodlama.io.ecommerce.dto.responses.get.GetAllCategoriesResponse;
-import kodlama.io.ecommerce.dto.responses.get.GetCategoryResponse;
-import kodlama.io.ecommerce.dto.responses.update.UpdateCategoryResponse;
+import kodlama.io.ecommerce.business.dto.requests.create.CreateCategoryRequest;
+import kodlama.io.ecommerce.business.dto.requests.update.UpdateCategoryRequest;
+import kodlama.io.ecommerce.business.dto.responses.create.CreateCategoryResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.GetAllCategoriesResponse;
+import kodlama.io.ecommerce.business.dto.responses.get.GetCategoryResponse;
+import kodlama.io.ecommerce.business.dto.responses.update.UpdateCategoryResponse;
 import kodlama.io.ecommerce.entities.Category;
 import kodlama.io.ecommerce.repository.CategoryRepository;
 import lombok.AllArgsConstructor;
