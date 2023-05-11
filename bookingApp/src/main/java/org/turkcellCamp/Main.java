@@ -12,7 +12,7 @@ public class Main {
         individualCustomer1.setFirstName("Kadir");
         individualCustomer1.setLastName("Ulge");
         individualCustomer1.setNationalityId("012345678910");
-	    IndividualCustomer individualCustomer2 = new IndividualCustomer(3, "Basak", "Ulge", "712345678913");
+	IndividualCustomer individualCustomer2 = new IndividualCustomer(3, "Basak", "Ulge", "712345678913");
 
         Hotel hotel1 = new Hotel(1,"Hilton");
 
