@@ -8,7 +8,7 @@ Req 1 : Sistemde Ürünler(Product) tutulmalıdır.
 
 Req 2 : Ürünün id,name,quantity,price ve description şeklinde özellikleri olacaktır.
 
-Req 3 : Ürünleri ekleyebilecek, silebilecek, güncelleyebilecek, listeleyebilecek, id ile getirebilecek kodları yazınız. Bunu tamamen in memory yapınız.
+Req 3 : Ürünleri ekleyebilecek, silebilecek, güncelleyebilecek, listeleyebilecek, id ile getirebilecek kodları yazınız.
 
 Req 4 : Ürünlerin fiyat bilgisi 0 dan büyük olmalıdır.
 
