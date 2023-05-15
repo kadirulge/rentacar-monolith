@@ -1,4 +1,4 @@
--Turkcell GYGY E-commerce HW-
+Turkcell GYGY E-commerce HW
 
 Bir E-ticaret sistemi oluşturmak istiyoruz. Spring Boot 3.0.4, paket yöneticisi olarak Maven ve Java SDK olarak 17 veya daha üst bir versiyon kullanılacaktır. (Sadece Spring Web ve Swagger bağımlılığını eklemeniz yeterli olacaktır.)
 
