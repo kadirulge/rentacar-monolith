@@ -93,7 +93,6 @@ public class MaintenanceManager implements MaintenanceService
         return response;
     }
 
-    //isComplete değşimi dikkate alınmadı!
     @Override
     public UpdateMaintenanceResponse update(UUID id, UpdateMaintenanceRequest request)
     {

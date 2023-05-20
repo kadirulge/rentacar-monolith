@@ -15,8 +15,8 @@ import java.util.UUID;
 public class UpdateMaintenanceResponse
 {
     private UUID id;
-    private String information;
     private UUID carId;
+    private String information;
     private boolean isCompleted;
     private LocalDateTime startDate;
     private LocalDateTime endDate;

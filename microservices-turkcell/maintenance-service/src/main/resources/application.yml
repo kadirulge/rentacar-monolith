@@ -4,7 +4,7 @@ spring:
   datasource:
     username: root
     password: mysql
-    url: jdbc:mysql://localhost:3306/maintenancedb-turkcell?createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3307/maintenancedb-turkcell?createDatabaseIfNotExist=true
     driver-class-name: com.mysql.jdbc.Driver
   jpa:
     properties:
@@ -32,8 +32,4 @@ eureka:
     prefer-ip-address: true
 server:
   port: 0
-resilience4j.retry:
-  instances:
-    retryToInventoryService:
-      maxAttempts: 20
-      waitDuration: 10s
+

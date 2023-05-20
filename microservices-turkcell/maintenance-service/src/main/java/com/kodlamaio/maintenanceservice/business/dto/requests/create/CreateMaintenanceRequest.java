@@ -13,6 +13,6 @@ import java.util.UUID;
 @Setter
 public class CreateMaintenanceRequest
 {
-    private String information;
     private UUID carId;
+    private String information;
 }
