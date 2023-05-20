@@ -48,7 +48,7 @@ public class MaintenanceManager implements MaintenanceService
     {
         //rules.checkIfMaintenanceExists(id);
 
-        Maintenance maintenance = repository.findById(id).get();
+        Maintenance maintenance = repository.findById(id).orElseThrow();
 
         GetMaintenanceResponse response = mapper.forResponse().map(maintenance, GetMaintenanceResponse.class);
         return response;
