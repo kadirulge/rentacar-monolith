@@ -9,16 +9,23 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-@Setter
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateRentalRequest {
+public class CreateRentalRequest
+{
     @NotNull
     private UUID carId;
     @Min(1)
     private double dailyPrice;
     @Min(1)
     private int rentedForDays;
-    // TODO: Credit Card Information
+
+    // Credit Card Information
+    private String cardNumber;
+    private String cardHolder;
+    private int cardExpirationYear;
+    private int cardExpirationMonth;
+    private String cardCvv;
 }
