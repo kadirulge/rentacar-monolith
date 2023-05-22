@@ -4,7 +4,7 @@ import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import com.kodlamaio.commonpackage.utils.dto.CreateRentalPaymentRequest;
 import com.kodlamaio.commonpackage.utils.mappers.ModelMapperService;
 import com.kodlamaio.paymentservice.business.abstracts.PaymentService;
-import com.kodlamaio.paymentservice.business.abstracts.PostService;
+import com.kodlamaio.paymentservice.business.abstracts.PosService;
 import com.kodlamaio.paymentservice.business.dto.requests.create.CreatePaymentRequest;
 import com.kodlamaio.paymentservice.business.dto.requests.update.UpdatePaymentRequest;
 import com.kodlamaio.paymentservice.business.dto.responses.create.CreatePaymentResponse;
@@ -26,7 +26,7 @@ public class PaymentManager implements PaymentService
 {
     private final PaymentRepository repository;
     private final ModelMapperService mapper;
-    private final PostService postService;
+    private final PosService posService;
     private final PaymentBusinessRules rules;
 
     @Override
@@ -42,6 +42,7 @@ public class PaymentManager implements PaymentService
     @Override
     public GetPaymentResponse getById(UUID id)
     {
+        rules.checkIfPaymentExists(id);
         Payment payment = repository.findById(id).orElseThrow();
 
         GetPaymentResponse response = mapper.forResponse().map(payment, GetPaymentResponse.class);
@@ -99,7 +100,7 @@ public class PaymentManager implements PaymentService
 
             rules.checkIfBalanceIsEnough(request.getPrice(), payment.getBalance());
             //FAKE POS SERVICE
-            postService.pay();
+            posService.pay();
 
             processPayment(payment, request.getPrice());
             response.setSuccess(true);

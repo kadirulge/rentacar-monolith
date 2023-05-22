@@ -1,6 +1,6 @@
 package com.kodlamaio.paymentservice.business.abstracts;
 
-public interface PostService
+public interface PosService
 {
     void pay();
 }

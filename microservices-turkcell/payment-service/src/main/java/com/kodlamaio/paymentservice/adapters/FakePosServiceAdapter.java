@@ -1,10 +1,10 @@
 package com.kodlamaio.paymentservice.adapters;
 
-import com.kodlamaio.paymentservice.business.abstracts.PostService;
+import com.kodlamaio.paymentservice.business.abstracts.PosService;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FakePosServiceAdapter implements PostService
+public class FakePosServiceAdapter implements PosService
 {
     @Override
     public void pay()

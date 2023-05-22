@@ -46,7 +46,7 @@ public class MaintenanceManager implements MaintenanceService
     @Override
     public GetMaintenanceResponse getById(UUID id)
     {
-        //rules.checkIfMaintenanceExists(id);
+        rules.checkIfMaintenanceExists(id);
 
         Maintenance maintenance = repository.findById(id).orElseThrow();
 
@@ -120,6 +120,7 @@ public class MaintenanceManager implements MaintenanceService
         UUID carId = maintenance.getCarId();
         if(repository.existsByCarIdAndIsCompletedIsFalse(carId))
         {
+            //carService.changeState(carId, State.AVAILABLE);
             sendKafkaMaintenanceDeletedEvent(carId);
         }
     }
