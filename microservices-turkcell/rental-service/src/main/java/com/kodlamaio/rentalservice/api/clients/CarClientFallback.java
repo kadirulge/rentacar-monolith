@@ -1,5 +1,6 @@
 package com.kodlamaio.rentalservice.api.clients;
 
+import com.kodlamaio.commonpackage.utils.dto.CarClientResponse;
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import io.github.resilience4j.retry.annotation.Retry;
 import lombok.extern.slf4j.Slf4j;
@@ -14,8 +15,13 @@ import java.util.UUID;
 public class CarClientFallback implements CarClient{
     @Override
     public ClientResponse checkIfCarAvailable(UUID carId) {
-        log.info("INVENTORY SERVICE IS DOWN!");
+        log.info("INVENTORY SERVICE IS DOWN! CheckIfCarAvailable");
         throw new RuntimeException("INVENTORY SERVICE IS DOWN!");
     }
 
+    @Override
+    public CarClientResponse getCarForInvoice(UUID carId) {
+        log.info("INVENTORY SERVICE IS DOWN! getCar");
+        throw new RuntimeException("INVENTORY SERVICE IS DOWN!");
+    }
 }

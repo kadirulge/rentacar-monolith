@@ -1,5 +1,6 @@
 package com.kodlamaio.rentalservice.api.clients;
 
+import com.kodlamaio.commonpackage.utils.dto.CarClientResponse;
 import com.kodlamaio.commonpackage.utils.dto.ClientResponse;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -11,7 +12,9 @@ import java.util.UUID;
 @Retry(name = "retryToInventoryService")
 @FeignClient(name = "inventory-service", fallback = CarClientFallback.class)
 public interface CarClient {
-
     @GetMapping(value = "/api/cars/check-car-available/{carId}")
     ClientResponse checkIfCarAvailable(@PathVariable UUID carId);
+
+    @GetMapping(value = "/api/cars/get-car-for-invoice/{carId}")
+    CarClientResponse getCarForInvoice(@PathVariable UUID carId) throws InterruptedException;
 }
